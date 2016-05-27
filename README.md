@@ -161,7 +161,7 @@ Opening a serial port:
 
 ```js
 var SerialPort = require("serialport");
-var port = new SerialPort("/dev/tty-usbserial1", {
+var port = new SerialPort.SerialPort("/dev/tty-usbserial1", {
   baudrate: 57600
 });
 ```
@@ -182,7 +182,7 @@ Constructing a `SerialPort` object will open a port, eventually. You can bind ev
 
 ```js
 var SerialPort = require('serialport');
-var port = new SerialPort('/dev/tty-usbserial1');
+var port = new SerialPort.SerialPort('/dev/tty-usbserial1');
 
 port.on('open', function () {
   port.write('main screen turn on', function(err) {
@@ -197,7 +197,7 @@ port.on('open', function () {
 This could be moved to the constructor's callback.
 ```js
 var SerialPort = require('serialport');
-var port = new SerialPort('/dev/tty-usbserial1', function () {
+var port = new SerialPort.SerialPort('/dev/tty-usbserial1', function () {
   port.write('main screen turn on', function(err) {
     if (err) {
       return console.log('Error: ', err.message);
@@ -211,7 +211,7 @@ When disabling the `openImmediately` flag you'll need to open the port on your o
 
 ```js
 var SerialPort = require('serialport');
-var port = new SerialPort('/dev/tty-usbserial1', {}, false);
+var port = new SerialPort.SerialPort('/dev/tty-usbserial1', {}, false);
 
 port.open(function (err) {
   if (err) {
@@ -263,7 +263,7 @@ Out of the box, node-serialport provides two parsers one that simply emits the r
 ```js
 var SerialPort = require('serialport');
 
-var port = new SerialPort('/dev/tty-usbserial1', {
+var port = new SerialPort.SerialPort('/dev/tty-usbserial1', {
   parser: SerialPort.parsers.readline('\n')
 });
 ```
@@ -273,7 +273,7 @@ To use the raw parser, you just provide the function definition (or leave undefi
 ```js
 var SerialPort = require('serialport');
 
-var port = new SerialPort('/dev/tty-usbserial1', {
+var port = new SerialPort.SerialPort('/dev/tty-usbserial1', {
   parser: SerialPort.parsers.raw
 });
 ```
